@@ -1,5 +1,5 @@
-function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
-    if (msg.startsWith("!·¹½ÄPC¹æ ")) {
+ï»¿function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
+    if (msg.startsWith("!ë ˆì‹PCë°© ")) {
         sp = msg.substr(7).split(" ");
         const count = 21;
         let u = org.jsoup.Jsoup.connect("http://rainbow6pcbang.pmang.com/?mKey=2&sKey=1&ctrl=pcbang%3Apcbang_list&keyword=" + sp[0] + "&page=" + sp[1]).get()
@@ -8,7 +8,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
             var pc_name = u.select(".pcbang").get(i).text().toUpperCase();
             var pc_tel = u.select(".tel").get(i).text()
             var pc_add = u.select(".address").get(i).text()
-            box.push(i + ".\n??ÀÌ¸§ : " + pc_name + "\n?? ÀüÈ­¹øÈ£ : " + pc_tel + "\n?? ÁÖ¼Ò : " + pc_add + "\n")
+            box.push(i + ".\nğŸ·ì´ë¦„ : " + pc_name + "\nğŸ“ ì „í™”ë²ˆí˜¸ : " + pc_tel + "\nğŸ—º ì£¼ì†Œ : " + pc_add + "\n")
         }
         replier.reply(box.join("\n").trim())
     }
