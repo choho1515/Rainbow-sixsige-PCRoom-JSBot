@@ -1,29 +1,14 @@
-(function(_0x6f0a05, _0x46b6af) {
-    var _0x1b8564 = function(_0x3db301) {
-        while (--_0x3db301) {
-            _0x6f0a05['push'](_0x6f0a05['shift']());
+function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
+    if (msg.startsWith("!레식PC방 ")) {
+        sp = msg.substr(7).split(" ");
+        const count = 21;
+        let u = org.jsoup.Jsoup.connect("http://rainbow6pcbang.pmang.com/?mKey=2&sKey=1&ctrl=pcbang%3Apcbang_list&keyword=" + sp[0] + "&page=" + sp[1]).get()
+        var box = [];
+        for (i = 1; i < u.select(".pcbang").size() - 1; i++) {
+            var pc_name = u.select(".pcbang").get(i).text().toUpperCase();
+            var pc_tel = u.select(".tel").get(i).text()
+            var pc_add = u.select(".address").get(i).text()
+            box.push(i + ".\n🏷이름 : " + pc_name + "\n📞 전화번호 : " + pc_tel + "\n🗺 주소 : " + pc_add + "\n")
         }
-    };
-    _0x1b8564(++_0x46b6af);
-}(_0x46b6, 0x81));
-var _0x1b85 = function(_0x6f0a05, _0x46b6af) {
-    _0x6f0a05 = _0x6f0a05 - 0x0;
-    var _0x1b8564 = _0x46b6[_0x6f0a05];
-    return _0x1b8564;
-};
-
-function response(_0x23407c, _0x9918a1, _0x3d75bf, _0x3a7c9e, _0x4dc52f, _0x1308dc, _0x110f70) {
-    if (_0x9918a1[_0x1b85('0x7')](_0x1b85('0x0'))) {
-        sp = _0x9918a1[_0x1b85('0xc')](0x7)[_0x1b85('0xf')]('\x20');
-        const _0x14cd30 = 0x15;
-        let _0x1a9e55 = org[_0x1b85('0x11')][_0x1b85('0x2')][_0x1b85('0xa')](_0x1b85('0x9') + sp[0x0] + _0x1b85('0x13') + sp[0x1])['get']();
-        var _0x54b8b0 = [];
-        for (i = 0x1; i < _0x1a9e55['select'](_0x1b85('0x12'))[_0x1b85('0xb')]() - 0x1; i++) {
-            var _0x3be5b4 = _0x1a9e55[_0x1b85('0x6')](_0x1b85('0x12'))[_0x1b85('0x3')](i)[_0x1b85('0x8')]()['toUpperCase']();
-            var _0x35d768 = _0x1a9e55[_0x1b85('0x6')](_0x1b85('0xe'))[_0x1b85('0x3')](i)[_0x1b85('0x8')]();
-            var _0x267d14 = _0x1a9e55['select']('.address')[_0x1b85('0x3')](i)[_0x1b85('0x8')]();
-            _0x54b8b0[_0x1b85('0x10')](i + _0x1b85('0x5') + _0x3be5b4 + _0x1b85('0x4') + _0x35d768 + '\x0a🗺\x20주소\x20:\x20' + _0x267d14 + '\x0a');
-        }
-        _0x4dc52f['reply'](_0x54b8b0[_0x1b85('0xd')]('\x0a')[_0x1b85('0x1')]());
+        replier.reply(box.join("\n").trim())
     }
-}
